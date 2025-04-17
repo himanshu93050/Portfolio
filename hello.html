@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Pathak - Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #212529;
+            --light-color: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--light-color);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(0, 123, 255, 0.05) 100%);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            margin-right: 20px;
+            color: var(--secondary-color);
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 50px;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-list li::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin-right: 10px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            height: 200px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 24px;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .project-tech {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .project-description {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--light-color);
+            border: 3px solid var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -13px;
+        }
+
+        .right::after {
+            left: -13px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .timeline-content .date {
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Education Section */
+        .education {
+            padding: 100px 0;
+        }
+
+        .education-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .education-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .education-card h4 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .education-card .year {
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .education-card p {
+            color: var(--secondary-color);
+        }
+
+        /* Certificates Section */
+        .certificates {
+            padding: 100px 0;
+            background-color: var(--light-color);
+        }
+
+        .certificates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .certificate-card {
+            background-color: var(--background-color);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .certificate-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .certificate-card .issuer {
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .certificate-card .date {
+            color: var(--secondary-color);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: var(--light-color);
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .footer-links a {
+            color: var(--light-color);
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 18px;
+            }
+
+            .left::after, .right::after {
+                left: 18px;
+            }
+
+            .right {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-content {
+                align-items: center;
+            }
+
+            .projects-container, .skills-container, .education-container, .certificates-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">HP</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Himanshu Pathak</h1>
+                <h2>Computer Science Engineer & Developer</h2>
+                <p>I am a passionate developer focused on creating innovative solutions using modern technologies.</p>
+                <a href="#contact" class="btn">Contact Me</a>
+                <div class="social-links">
+                    <a href="http://www.linkedin.com/in/himanshu9350/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/himanshu93050" target="_blank">GitHub</a>
+                    <a href="mailto:himanshupathak7575@gmail.com">Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Learn more about my background and interests</p>
+            <div class="about-content">
+                <p>I am a Computer Science Engineering student at Lovely Professional University with a strong foundation in programming and a passion for developing innovative solutions. With expertise in various programming languages and tools, I focus on creating efficient and user-friendly applications.</p>
+                <p>Throughout my academic journey, I've worked on several projects that have honed my skills in Flutter, Next.js, Firebase, and more. I'm particularly interested in AI-powered applications and full-stack development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <p class="section-subtitle">Technical expertise and tools I work with</p>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>CSS</li>
+                        <li>HTML</li>
+                        <li>C++</li>
+                        <li>Java</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <ul class="skill-list">
+                        <li>MongoDB</li>
+                        <li>Tableau</li>
+                        <li>ETL</li>
+                        <li>Informatica Developer for Data Quality (IDQ)</li>
+                        <li>MS SQL Server</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li>Problem-Solving</li>
+                        <li>Team Player</li>
+                        <li>Project Management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <p class="section-subtitle">Some of my recent work</p>
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-img">Brainware Mobile</div>
+                    <div class="project-info">
+                        <h3>Brainware Mobile</h3>
+                        <div class="project-tech">Flutter, Dart, Firebase, API, Git</div>
+                        <p class="project-description">Built a cross-platform AI-powered mobile application for Android and iOS using Flutter and Firebase. Implemented Firebase Authentication and Firestore for secure user management and real-time data storage. Integrated OpenAI and Replicate APIs to enable AI-driven text and image generation features.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">Brainwave Web</div>
+                    <div class="project-info">
+                        <h3>Brainwave Web</h3>
+                        <div class="project-tech">Next.js, Node.js, OpenAI, Git</div>
+                        <p class="project-description">Developed a full-stack web application using Next.js and Prisma for efficient data management. Integrated multiple AI tools using Replicate and OpenAI APIs to provide intelligent responses. Visualized GitHub data to enhance collaboration insights. Followed best practices for API optimization, improving application performance.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">ChatGPT Clone</div>
+                    <div class="project-info">
+                        <h3>ChatGPT Clone</h3>
+                        <div class="project-tech">Node.js, Firebase, API, Git</div>
+                        <p class="project-description">Developed a cross-platform AI chatbot application for Android and iOS using Flutter and Node.js. Implemented authentication and real-time database services using Firebase and Firestore. Followed MVC architecture to maintain code scalability and efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <h2 class="section-title">Training & Experience</h2>
+            <p class="section-subtitle">My professional journey</p>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>NGO Management Using Java</h3>
+                        <div class="date">July 2015 - Techpile Technology</div>
+                        <p>Designed and developed a centralized platform to streamline NGO operations, including donor management and volunteer coordination. Implemented features for donor registration, donation tracking, and automated receipt generation. Developed a module for volunteer registration, task assignment, and performance tracking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">My academic background</p>
+            <div class="education-container">
+                <div class="education-card">
+                    <h3>Lovely Professional University</h3>
+                    <h4>Bachelor of Technology</h4>
+                    <div class="year">2023 - 2026</div>
+                    <p>Computer Science and Engineering</p>
+                    <p>CGPA: 8.64</p>
+                </div>
+                <div class="education-card">
+                    <h3>Govt. Polytechnic College Sonbhadra, UP</h3>
+                    <h4>Diploma in Computer Science</h4>
+                    <div class="year">2020 - 2023</div>
+                    <p>Score: 76%</p>
+                </div>
+                <div class="education-card">
+                    <h3>Udai Pratop Public School Varanasi, UP</h3>
+                    <h4>Secondary School Certificate</h4>
+                    <div class="year">2018 - 2020</div>
+                    <p>Score: 72%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="certificates">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <p class="section-subtitle">Professional qualifications and achievements</p>
+            <div class="certificates-container">
+                <div class="certificate-card">
+                    <h3>Application Development in Java</h3>
+                    <div class="issuer">Lovely Professional University</div>
+                    <div class="date">May 2024</div>
+                </div>
+                <div class="certificate-card">
+                    <h3>Mastering Data Structures and Algorithms using C++</h3>
+                    <div class="issuer">Udemy</div>
+                    <div class="date">May 2024</div>
+                </div>
+                <div class="certificate-card">
+                    <h3>SQL | HackerRank</h3>
+                    <div class="issuer">HackerRank</div>
+                    <div class="date">April 2022</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <p class="section-subtitle">Let's get in touch</p>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Feel free to reach out with any questions or opportunities.</p>
+                    <ul class="contact-details">
+                        <li>Email: himanshupathak7575@gmail.com</li>
+                        <li>Phone: +91 9305038385</li>
+                        <li>Location: Punjab, India</li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Himanshu Pathak. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="http://www.linkedin.com/in/himanshu9350/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/himanshu93050" target="_blank">GitHub</a>
+                <a href="mailto:himanshupathak7575@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
